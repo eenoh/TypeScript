@@ -1,0 +1,26 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000y\u0000p\u0000e\u0000S\u0000c\u0000r\u0000i\u0000p\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eenoh/TypeScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eenoh/TypeScript/issues"
+  },
+  "homepage": "https://github.com/eenoh/TypeScript#readme",
+  "devDependencies": {
+    "@types/node": "^25.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
