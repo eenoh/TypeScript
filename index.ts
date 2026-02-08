@@ -2,11 +2,11 @@ type Person = {
   name: string;
 };
 
-const person: Person = {
+const individual: Person = {
   name: "Emmanuel",
 };
 
-console.log(person.name);
+console.log(individual.name);
 
 
 
@@ -144,3 +144,26 @@ const matrix: number[][] = [
 ];
 
 console.log(matrix);
+
+
+/**
+ * Objects
+ */
+const person: { firstName: string; lastName: string; age: number } = {
+  firstName: "Emmanuel",
+  lastName: "Enoh",
+  age: 22
+}
+
+console.log(`${person.firstName} ${person.lastName} is ${person.age} years old!`);
+
+function printUser() : { name: string; age: number; location: string} {
+  return {
+    name: "Emmanuel",
+    age: 22,
+    location: "Austria"
+  }
+}
+
+const res6 = printUser();
+console.log(res6);
