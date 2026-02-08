@@ -181,7 +181,7 @@ function printPerson(person: Person) {
   console.log(`Name: ${person.name}, Age: ${person.age}`);
 }
 
-const myPerson: Person = { name: "Emmanuel", age: 25};
+const myPerson: Person = { name: "Emmanuel", age: 22};
 printPerson(myPerson);
 
 
@@ -239,3 +239,28 @@ const car: Car = {
 };
 
 console.log(`The ${car.brand} ${car.model} ${car.year} has a vin number of ${car.vin}`);
+
+
+
+/**
+ * Intersection Types
+ */
+type Applicant = {
+  name: string;
+  age: number;
+};
+
+type Employee = {
+  id: number;
+  title: string;
+};
+
+type ApplicantAndEmployee = Applicant & Employee;
+
+const emmanuel: ApplicantAndEmployee = {
+  name: "Emmanuel",
+  age: 22,
+  id: 67,
+  title: "Junior Developer"
+}
+
