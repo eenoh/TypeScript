@@ -122,5 +122,25 @@ function neverReturns(): never {
   while (true) {}
 }
 // This line will cause a compile-time error bacause the function never returns
-x = neverReturns();
+// x = neverReturns();
 
+
+/**
+ * Arrays
+ */
+// Bracket Noation
+const numbers: number[] = [1, 2, 3, 4];
+numbers.push(5);
+console.log(numbers);
+
+// Array<type> Notation
+const names: Array<string> = ["Emmanuel", "Bedran", "Cheikh"];
+console.log(names);
+
+// Multi Dimensional Array
+const matrix: number[][] = [
+  [1, 2],
+  [3, 4],
+];
+
+console.log(matrix);
