@@ -306,5 +306,54 @@ function printStatus(status: RequestStatus): void {
 printStatus("loading");
 printStatus("success");
 
-// ❌ This would be a TypeScript error (not part of the union)
+// This would be a TypeScript error (not part of the union)
 // printStatus("done");
+
+
+
+/**
+ * Literal Types
+ */
+
+// Example 1: String literal types
+type Direction = "up" | "down" | "left" | "right";
+
+function move(direction: Direction): void {
+  console.log(`Moving ${direction}`);
+}
+
+move("up");
+move("left");
+
+
+// Example 2: Numeric literal types
+type DiceRoll = 1 | 2 | 3 | 4 | 5 | 6;
+
+function rollDice(value: DiceRoll): void {
+  console.log(`You rolled a ${value}`);
+}
+
+rollDice(4);
+
+
+// Example 3: Literal types in objects 
+type ThemeConfig = {
+  mode: "light" | "dark";
+};
+
+const theme: ThemeConfig = {
+  mode: "dark"
+};
+
+console.log(`Your current colour theme is ${theme.mode}!`);
+
+
+// Example 4: Literal types with function return values
+type HttpStatus = 200 | 400 | 401 | 404 | 500;
+
+function getStatus(success: boolean): HttpStatus {
+  return success ? 200 : 500;
+}
+
+const status = getStatus(true);
+console.log(`HTTP Status Code: ${status}`);
