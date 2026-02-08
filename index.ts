@@ -264,3 +264,47 @@ const emmanuel: ApplicantAndEmployee = {
   title: "Junior Developer"
 }
 
+/**
+ * Union Types
+ */
+
+type Id = string | number;
+
+function formatId(id: Id): string {
+  // Type narrowing using typeof
+  if (typeof id === "string") {
+    return `ID: ${id.toUpperCase()}`;
+  }
+  // Here, id is a number
+  return `ID: ${id.toString().padStart(4, "0")}`;
+}
+
+console.log(formatId("ab12")); // ID: AB12
+console.log(formatId(7));      // ID: 0007
+
+
+// Example 2: Union of string literals (common real-world pattern)
+type RequestStatus = "idle" | "loading" | "success" | "error";
+
+function printStatus(status: RequestStatus): void {
+  switch (status) {
+    case "idle":
+      console.log("Status: waiting to start.");
+      break;
+    case "loading":
+      console.log("Status: loading...");
+      break;
+    case "success":
+      console.log("Status: completed successfully.");
+      break;
+    case "error":
+      console.log("Status: something went wrong.");
+      break;
+  }
+}
+
+printStatus("loading");
+printStatus("success");
+
+// ❌ This would be a TypeScript error (not part of the union)
+// printStatus("done");
