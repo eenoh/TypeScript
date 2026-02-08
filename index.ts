@@ -92,4 +92,13 @@ const double2 = (x: number): number => x * x;
 const res5 = double2(2);
 console.log(res5);
 
+/**
+ * Void Functions
+ */
+function printMessage(message: string): void {
+  console.log(`This is my message: ${message}`);
+}
+
+printMessage("Hello, how are you?");
+
 
