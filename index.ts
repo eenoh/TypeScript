@@ -219,3 +219,23 @@ if (animal1.age == undefined) {
 } else {
   console.log(`This is ${animal1.name} the ${animal1.type} who is ${animal1.age} old!`);
 }
+
+
+/**
+ * Read Only Property
+ */
+type Car = {
+  readonly vin: string;
+  brand: string;
+  model: string;
+  year: number;
+};
+
+const car: Car = {
+  vin: "1HGCM82633A004352",
+  brand: "Toyota",
+  model: "Corolla",
+  year: 2020,
+};
+
+console.log(`The ${car.brand} ${car.model} ${car.year} has a vin number of ${car.vin}`);
