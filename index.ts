@@ -197,3 +197,25 @@ function printUserInfo(user: User): string {
 
 const res7 = printUserInfo({ name: "Emmanuel", age: 22, location: "Austria" });
 console.log(res7);
+
+
+/**
+ * Optional Properties
+ */
+type Animal = {
+  name: string;
+  age?: number;
+  type: string;
+}
+
+const animal1: Animal = {
+  name: "Leo",
+  type: "Lion",
+  age: 29
+};
+
+if (animal1.age == undefined) {
+  console.log(`This is ${animal1.name} the ${animal1.type}!`);
+} else {
+  console.log(`This is ${animal1.name} the ${animal1.type} who is ${animal1.age} old!`);
+}
