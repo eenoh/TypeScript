@@ -283,7 +283,7 @@ console.log(formatId("ab12")); // ID: AB12
 console.log(formatId(7));      // ID: 0007
 
 
-// Example 2: Union of string literals (common real-world pattern)
+// Union of string literals (common real-world pattern)
 type RequestStatus = "idle" | "loading" | "success" | "error";
 
 function printStatus(status: RequestStatus): void {
@@ -315,7 +315,7 @@ printStatus("success");
  * Literal Types
  */
 
-// Example 1: String literal types
+// String literal types
 type Direction = "up" | "down" | "left" | "right";
 
 function move(direction: Direction): void {
@@ -326,7 +326,7 @@ move("up");
 move("left");
 
 
-// Example 2: Numeric literal types
+// Numeric literal types
 type DiceRoll = 1 | 2 | 3 | 4 | 5 | 6;
 
 function rollDice(value: DiceRoll): void {
@@ -336,7 +336,7 @@ function rollDice(value: DiceRoll): void {
 rollDice(4);
 
 
-// Example 3: Literal types in objects 
+// Literal types in objects 
 type ThemeConfig = {
   mode: "light" | "dark";
 };
@@ -348,7 +348,7 @@ const theme: ThemeConfig = {
 console.log(`Your current colour theme is ${theme.mode}!`);
 
 
-// Example 4: Literal types with function return values
+// Literal types with function return values
 type HttpStatus = 200 | 400 | 401 | 404 | 500;
 
 function getStatus(success: boolean): HttpStatus {
@@ -363,12 +363,12 @@ console.log(`HTTP Status Code: ${status}`);
  * Tuple Types
  */
 
-// Example 1: Basic Tuple
+// Basic Tuple
 const userTuple: [string, number] = ["Emmanuel", 22];
 console.log(`Name: ${userTuple[0]}, Age: ${userTuple[1]}`);
 
 
-// Example 2: Tuple used in a function return
+// Tuple used in a function return
 function getUserInfo(): [string, number, string] {
   return ["Emmanuel", 22, "Austria"];
 }
@@ -379,3 +379,76 @@ console.log(
 );
 
 
+/**
+ * Enums
+ */
+
+// Numeric enum
+enum MoveDirection {
+  Up,
+  Down,
+  Left,
+  Right
+}
+
+function movePlayer(direction: MoveDirection): void {
+  console.log(`Moving in direction: ${MoveDirection[direction]}`);
+}
+
+movePlayer(MoveDirection.Up);
+
+
+// String Enum
+enum UserRole {
+  Admin = "Admin",
+  Editor = "Editor",
+  Viewer = "Viewer"
+}
+
+function checkAccess(role: UserRole): void {
+  if (role === UserRole.Admin) {
+    console.log("Full acces granted!");
+  } else {
+    console.log("Limited access granted!");
+  }
+}
+
+checkAccess(UserRole.Viewer);
+
+
+// Enum in an Object
+enum OrderStatus {
+  Pending = "PENDING",
+  Shipped = "SHIPPED",
+  Delivered = "DELIVERED"
+}
+
+type Order = {
+  id: number;
+  status: OrderStatus;
+};
+
+const order: Order = {
+  id: 101,
+  status: OrderStatus.Delivered
+};
+
+console.log(`Order #${order.id} is currently ${order.status}!`);
+
+
+// Enum used in a switch statement
+function handleOrderStatus(status: OrderStatus): void {
+  switch (status) {
+    case OrderStatus.Pending:
+      console.log("Order is being prepared.");
+      break;
+    case OrderStatus.Shipped:
+      console.log("Order is on the way.");
+      break;
+    case OrderStatus.Delivered:
+      console.log("Order has been delivered.");
+      break;
+  }
+}
+
+handleOrderStatus(order.status);
