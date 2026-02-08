@@ -1,8 +1,8 @@
-type Person = {
+type Individual = {
   name: string;
 };
 
-const individual: Person = {
+const individual: Individual = {
   name: "Emmanuel",
 };
 
@@ -167,3 +167,33 @@ function printUser() : { name: string; age: number; location: string} {
 
 const res6 = printUser();
 console.log(res6);
+
+
+/**
+ * Type Aliases
+ */
+type Person = {
+  name: string;
+  age: number;
+};
+
+function printPerson(person: Person) {
+  console.log(`Name: ${person.name}, Age: ${person.age}`);
+}
+
+const myPerson: Person = { name: "Emmanuel", age: 25};
+printPerson(myPerson);
+
+
+type User = {
+  name: string;
+  age: number;
+  location: string;
+}
+
+function printUserInfo(user: User): string {
+  return `Name: ${user.name}, Age: ${user.age}, Location: ${user.location}`;
+}
+
+const res7 = printUserInfo({ name: "Emmanuel", age: 22, location: "Austria" });
+console.log(res7);
