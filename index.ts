@@ -102,3 +102,25 @@ function printMessage(message: string): void {
 printMessage("Hello, how are you?");
 
 
+/**
+ * Never
+ */
+// Function that always throws an Error
+function throwError(msg: string): never {
+  throw new Error(msg); 
+}
+
+// Function that has an infinite loop
+function infiniteLoop(): never {
+  while (true) {}
+}
+
+// A variable that can never have a value
+let x: never;
+
+function neverReturns(): never {
+  while (true) {}
+}
+// This line will cause a compile-time error bacause the function never returns
+x = neverReturns();
+
