@@ -357,3 +357,25 @@ function getStatus(success: boolean): HttpStatus {
 
 const status = getStatus(true);
 console.log(`HTTP Status Code: ${status}`);
+
+
+/**
+ * Tuple Types
+ */
+
+// Example 1: Basic Tuple
+const userTuple: [string, number] = ["Emmanuel", 22];
+console.log(`Name: ${userTuple[0]}, Age: ${userTuple[1]}`);
+
+
+// Example 2: Tuple used in a function return
+function getUserInfo(): [string, number, string] {
+  return ["Emmanuel", 22, "Austria"];
+}
+
+const userInfo = getUserInfo();
+console.log(
+  `Name: ${userInfo[0]}, Age: ${userInfo[1]}, Location: ${userInfo[2]}`
+);
+
+
