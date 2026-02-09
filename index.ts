@@ -1,3 +1,12 @@
+/**
+ * TypeScript Examples (organized)
+ * Note: Code is kept the same; only structure/section headers were improved.
+ */
+
+/* =========================================================
+   1) Basics
+========================================================= */
+
 type Individual = {
   name: string;
 };
@@ -7,8 +16,6 @@ const individual: Individual = {
 };
 
 console.log(individual.name);
-
-
 
 /**
  * Annotations
@@ -27,8 +34,7 @@ console.log(age);
 
 // Boolean
 let tsEasy: boolean = false;
-console.log(tsEasy); 
-
+console.log(tsEasy);
 
 /**
  * Type Inference
@@ -52,6 +58,9 @@ color = true;
 // color.toUpperCase();
 console.log(color);
 
+/* =========================================================
+   2) Functions
+========================================================= */
 
 /**
  * Function Parameters Annotations
@@ -86,7 +95,6 @@ function double1(x: number): number {
 const res4 = double1(22);
 console.log(res4);
 
-
 // Arrow Function
 const double2 = (x: number): number => x * x;
 const res5 = double2(2);
@@ -101,13 +109,12 @@ function printMessage(message: string): void {
 
 printMessage("Hello, how are you?");
 
-
 /**
  * Never
  */
 // Function that always throws an Error
 function throwError(msg: string): never {
-  throw new Error(msg); 
+  throw new Error(msg);
 }
 
 // Function that has an infinite loop
@@ -124,6 +131,9 @@ function neverReturns(): never {
 // This line will cause a compile-time error bacause the function never returns
 // x = neverReturns();
 
+/* =========================================================
+   3) Arrays & Objects
+========================================================= */
 
 /**
  * Arrays
@@ -145,29 +155,33 @@ const matrix: number[][] = [
 
 console.log(matrix);
 
-
 /**
  * Objects
  */
 const person: { firstName: string; lastName: string; age: number } = {
   firstName: "Emmanuel",
   lastName: "Enoh",
-  age: 22
-}
+  age: 22,
+};
 
-console.log(`${person.firstName} ${person.lastName} is ${person.age} years old!`);
+console.log(
+  `${person.firstName} ${person.lastName} is ${person.age} years old!`
+);
 
-function printUser() : { name: string; age: number; location: string} {
+function printUser(): { name: string; age: number; location: string } {
   return {
     name: "Emmanuel",
     age: 22,
-    location: "Austria"
-  }
+    location: "Austria",
+  };
 }
 
 const res6 = printUser();
 console.log(res6);
 
+/* =========================================================
+   4) Type Aliases, Optional/Readonly, Intersections/Unions/Literals
+========================================================= */
 
 /**
  * Type Aliases
@@ -181,15 +195,14 @@ function printPerson(person: Person) {
   console.log(`Name: ${person.name}, Age: ${person.age}`);
 }
 
-const myPerson: Person = { name: "Emmanuel", age: 22};
+const myPerson: Person = { name: "Emmanuel", age: 22 };
 printPerson(myPerson);
-
 
 type User = {
   name: string;
   age: number;
   location: string;
-}
+};
 
 function printUserInfo(user: User): string {
   return `Name: ${user.name}, Age: ${user.age}, Location: ${user.location}`;
@@ -198,7 +211,6 @@ function printUserInfo(user: User): string {
 const res7 = printUserInfo({ name: "Emmanuel", age: 22, location: "Austria" });
 console.log(res7);
 
-
 /**
  * Optional Properties
  */
@@ -206,20 +218,21 @@ type Animal = {
   name: string;
   age?: number;
   type: string;
-}
+};
 
 const animal1: Animal = {
   name: "Leo",
   type: "Lion",
-  age: 29
+  age: 29,
 };
 
 if (animal1.age == undefined) {
   console.log(`This is ${animal1.name} the ${animal1.type}!`);
 } else {
-  console.log(`This is ${animal1.name} the ${animal1.type} who is ${animal1.age} old!`);
+  console.log(
+    `This is ${animal1.name} the ${animal1.type} who is ${animal1.age} old!`
+  );
 }
-
 
 /**
  * Read Only Property
@@ -238,9 +251,9 @@ const car: Car = {
   year: 2020,
 };
 
-console.log(`The ${car.brand} ${car.model} ${car.year} has a vin number of ${car.vin}`);
-
-
+console.log(
+  `The ${car.brand} ${car.model} ${car.year} has a vin number of ${car.vin}`
+);
 
 /**
  * Intersection Types
@@ -261,13 +274,12 @@ const emmanuel: ApplicantAndEmployee = {
   name: "Emmanuel",
   age: 22,
   id: 67,
-  title: "Junior Developer"
-}
+  title: "Junior Developer",
+};
 
 /**
  * Union Types
  */
-
 type Id = string | number;
 
 function formatId(id: Id): string {
@@ -280,8 +292,7 @@ function formatId(id: Id): string {
 }
 
 console.log(formatId("ab12")); // ID: AB12
-console.log(formatId(7));      // ID: 0007
-
+console.log(formatId(7)); // ID: 0007
 
 // Union of string literals (common real-world pattern)
 type RequestStatus = "idle" | "loading" | "success" | "error";
@@ -309,8 +320,6 @@ printStatus("success");
 // This would be a TypeScript error (not part of the union)
 // printStatus("done");
 
-
-
 /**
  * Literal Types
  */
@@ -325,7 +334,6 @@ function move(direction: Direction): void {
 move("up");
 move("left");
 
-
 // Numeric literal types
 type DiceRoll = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -335,18 +343,16 @@ function rollDice(value: DiceRoll): void {
 
 rollDice(4);
 
-
-// Literal types in objects 
+// Literal types in objects
 type ThemeConfig = {
   mode: "light" | "dark";
 };
 
 const theme: ThemeConfig = {
-  mode: "dark"
+  mode: "dark",
 };
 
 console.log(`Your current colour theme is ${theme.mode}!`);
-
 
 // Literal types with function return values
 type HttpStatus = 200 | 400 | 401 | 404 | 500;
@@ -358,6 +364,9 @@ function getStatus(success: boolean): HttpStatus {
 const status = getStatus(true);
 console.log(`HTTP Status Code: ${status}`);
 
+/* =========================================================
+   5) Tuples & Enums
+========================================================= */
 
 /**
  * Tuple Types
@@ -366,7 +375,6 @@ console.log(`HTTP Status Code: ${status}`);
 // Basic Tuple
 const userTuple: [string, number] = ["Emmanuel", 22];
 console.log(`Name: ${userTuple[0]}, Age: ${userTuple[1]}`);
-
 
 // Tuple used in a function return
 function getUserInfo(): [string, number, string] {
@@ -378,7 +386,6 @@ console.log(
   `Name: ${userInfo[0]}, Age: ${userInfo[1]}, Location: ${userInfo[2]}`
 );
 
-
 /**
  * Enums
  */
@@ -388,7 +395,7 @@ enum MoveDirection {
   Up,
   Down,
   Left,
-  Right
+  Right,
 }
 
 function movePlayer(direction: MoveDirection): void {
@@ -397,12 +404,11 @@ function movePlayer(direction: MoveDirection): void {
 
 movePlayer(MoveDirection.Up);
 
-
 // String Enum
 enum UserRole {
   Admin = "Admin",
   Editor = "Editor",
-  Viewer = "Viewer"
+  Viewer = "Viewer",
 }
 
 function checkAccess(role: UserRole): void {
@@ -415,12 +421,11 @@ function checkAccess(role: UserRole): void {
 
 checkAccess(UserRole.Viewer);
 
-
 // Enum in an Object
 enum OrderStatus {
   Pending = "PENDING",
   Shipped = "SHIPPED",
-  Delivered = "DELIVERED"
+  Delivered = "DELIVERED",
 }
 
 type Order = {
@@ -430,11 +435,10 @@ type Order = {
 
 const order: Order = {
   id: 101,
-  status: OrderStatus.Delivered
+  status: OrderStatus.Delivered,
 };
 
 console.log(`Order #${order.id} is currently ${order.status}!`);
-
 
 // Enum used in a switch statement
 function handleOrderStatus(status: OrderStatus): void {
@@ -453,11 +457,13 @@ function handleOrderStatus(status: OrderStatus): void {
 
 handleOrderStatus(order.status);
 
+/* =========================================================
+   6) Classes (OOP)
+========================================================= */
 
 /**
  * Class Property
  */
-
 class Human {
   name: string;
   age: number;
@@ -471,11 +477,9 @@ class Human {
 const human = new Human("Emmanuel", 22);
 console.log(human.name);
 
-// Access Modifiers
-
 /**
  * Represents an automobile with a brand and model.
- * 
+ *
  * @param brand - The manufacturer of the automobile.
  * @param model - The specific model of the automobile.
  */
@@ -495,13 +499,13 @@ console.log("Model: " + car1.model);
 
 /**
  * Represent a simble Bank Account with a Balance
- * 
+ *
  * @param balance - The balance of the account
  */
 class BankAccount {
   private balance: number;
 
-  constructor(balance: number){
+  constructor(balance: number) {
     this.balance = balance;
   }
 
@@ -512,7 +516,6 @@ class BankAccount {
 
 const account = new BankAccount(1000);
 console.log(account.getBalance());
-
 
 class Worker {
   protected salary: number;
@@ -531,7 +534,6 @@ class Manager extends Worker {
 const manager = new Manager(5000);
 console.log(manager.getSalary());
 
-
 // Getter & Setters
 class Somenbody {
   private _age: number;
@@ -545,7 +547,7 @@ class Somenbody {
   }
 
   set age(value: number) {
-    if(value < 0) {
+    if (value < 0) {
       throw new Error("Age cannot be negative");
     }
     this._age = value;
@@ -558,15 +560,12 @@ console.log(user.age);
 user.age = 23;
 console.log(user.age);
 
-
-
-// Real World Example
 /**
  * Product
- * 
+ *
  * This is a class whiche you can define a Product with a
  * price and category attached to it
- * 
+ *
  * @param _product - Product Name
  * @param _price - Price
  * @param _category - Product Category
@@ -586,9 +585,11 @@ class Product {
     return this._price;
   }
 
-  set price(value: number){
-    if(value < 0) {
-      throw new Error("The value " + value + " is not allowed. Please set a value above 0");
+  set price(value: number) {
+    if (value < 0) {
+      throw new Error(
+        "The value " + value + " is not allowed. Please set a value above 0"
+      );
     }
 
     this._price = value;
@@ -603,8 +604,19 @@ class Product {
 }
 
 const product = new Product("Ice Cream", 3, "Chocolate");
-console.log("The " + product.category + " " + product.product + " costs " + product.price + "€"); 
+console.log(
+  "The " +
+    product.category +
+    " " +
+    product.product +
+    " costs " +
+    product.price +
+    "€"
+);
 
+/* =========================================================
+   7) Interfaces, Merging, Generics
+========================================================= */
 
 /**
  * Interfaces
@@ -619,25 +631,22 @@ interface Computer {
 const computer1: Computer = {
   name: "I7",
   ram: 4,
-  hdd: 100
-}
+  hdd: 100,
+};
 
 console.log("Computer Name: " + computer1.name);
 console.log("RAM: " + computer1.ram);
 console.log("HDD: " + computer1.hdd);
 
-
-
 interface MathOperation {
-  (x: number, y: number) : number
+  (x: number, y: number): number;
 }
 
 const add: MathOperation = (a, b) => a + b;
 const sub: MathOperation = (a, b) => a - b;
 const mul: MathOperation = (a, b) => a * b;
 const div: MathOperation = (a, b) => a / b;
-console.log(div(2,4));
-
+console.log(div(2, 4));
 
 interface PersonBase {
   name: string;
@@ -653,11 +662,10 @@ const executive: Executive = {
   name: "Emmanuel",
   age: 22,
   id: 1,
-  role: "Junior Developer"
-}
+  role: "Junior Developer",
+};
 
 console.log(executive);
-
 
 interface Welcome {
   firstName: string;
@@ -678,7 +686,7 @@ const emma: Welcome = {
   sayHello() {
     console.log("Welcome to the Team!");
   },
-}; 
+};
 
 const bob: Welcome = {
   firstName: "Bob",
@@ -687,11 +695,10 @@ const bob: Welcome = {
   sayHello() {
     console.log("You are the Man!");
   },
-}; 
+};
 
 greetEmployee(emma);
 greetEmployee(bob);
-
 
 // Declaration Merging
 interface Userr {
@@ -714,24 +721,20 @@ const userr: Userr = {
 
 console.log(userr);
 
-
 /**
  * Generics
  */
-function uniqueDataTypesFunc<Type>(
-  item: Type, defaultValue: Type
-): [Type, Type] {
+function uniqueDataTypesFunc<Type>(item: Type, defaultValue: Type): [Type, Type] {
   return [item, defaultValue];
 }
 
-const num = uniqueDataTypesFunc<number>(10, 24)
-const string = uniqueDataTypesFunc<string>("cool", "dude")
+const num = uniqueDataTypesFunc<number>(10, 24);
+const string = uniqueDataTypesFunc<string>("cool", "dude");
 const bool = uniqueDataTypesFunc<boolean>(true, false);
 
 console.log(num);
 console.log(string);
 console.log(bool);
-
 
 interface Dog {
   name: string;
@@ -745,3 +748,72 @@ const dog1 = uniqueDataTypesFunc<Dog>(
 
 console.log(dog1);
 
+/* =========================================================
+   8) Type Narrowing
+========================================================= */
+
+/**
+ * Type Guards using typeof
+ */
+function formatValue(value: string | number): string {
+  if (typeof value === "string") {
+    // value is string here
+    return value.toUpperCase();
+  }
+
+  // value is number here
+  return value.toFixed(2);
+}
+
+console.log(formatValue("typescript"));
+console.log(formatValue(12.345));
+
+/**
+ * instanceof Operator
+ */
+class Dogg {
+  bark() {
+    console.log("Woof!");
+  }
+}
+
+class Cat {
+  meow() {
+    console.log("Meow!");
+  }
+}
+
+function makeSound(animal: Dogg | Cat): void {
+  if (animal instanceof Dogg) {
+    // animal is Dog here
+    animal.bark();
+  } else {
+    // animal is Cat here
+    animal.meow();
+  }
+}
+
+makeSound(new Dogg());
+makeSound(new Cat());
+
+/**
+ * Intersection Types (narrowing context example)
+ */
+type Personn = {
+  name: string;
+};
+
+type Employeee = {
+  id: number;
+  role: string;
+};
+
+type EmployeeProfile = Personn & Employeee;
+
+const employee: EmployeeProfile = {
+  name: "Emmanuel",
+  id: 101,
+  role: "Developer",
+};
+
+console.log(`${employee.name} (ID: ${employee.id}) works as a ${employee.role}`);
