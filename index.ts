@@ -452,3 +452,160 @@ function handleOrderStatus(status: OrderStatus): void {
 }
 
 handleOrderStatus(order.status);
+
+
+/**
+ * Class Property
+ */
+
+class Human {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const human = new Human("Emmanuel", 22);
+console.log(human.name);
+
+// Access Modifiers
+
+/**
+ * Represents an automobile with a brand and model.
+ * 
+ * @param brand - The manufacturer of the automobile.
+ * @param model - The specific model of the automobile.
+ */
+class Automobile {
+  public brand: string;
+  public model: string;
+
+  constructor(brand: string, model: string) {
+    this.brand = brand;
+    this.model = model;
+  }
+}
+
+const car1 = new Automobile("Toyota", "Coralla");
+console.log("Brand: " + car1.brand);
+console.log("Model: " + car1.model);
+
+/**
+ * Represent a simble Bank Account with a Balance
+ * 
+ * @param balance - The balance of the account
+ */
+class BankAccount {
+  private balance: number;
+
+  constructor(balance: number){
+    this.balance = balance;
+  }
+
+  getBalance(): number {
+    return this.balance;
+  }
+}
+
+const account = new BankAccount(1000);
+console.log(account.getBalance());
+
+
+class Worker {
+  protected salary: number;
+
+  constructor(salary: number) {
+    this.salary = salary;
+  }
+}
+
+class Manager extends Worker {
+  getSalary(): number {
+    return this.salary;
+  }
+}
+
+const manager = new Manager(5000);
+console.log(manager.getSalary());
+
+
+// Getter & Setters
+class Somenbody {
+  private _age: number;
+
+  constructor(age: number) {
+    this._age = age;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+
+  set age(value: number) {
+    if(value < 0) {
+      throw new Error("Age cannot be negative");
+    }
+    this._age = value;
+  }
+}
+
+const user = new Somenbody(22);
+console.log(user.age);
+
+user.age = 23;
+console.log(user.age);
+
+
+
+// Real World Example
+/**
+ * Product
+ * 
+ * This is a class whiche you can define a Product with a
+ * price and category attached to it
+ * 
+ * @param _product - Product Name
+ * @param _price - Price
+ * @param _category - Product Category
+ */
+class Product {
+  private _product: string;
+  private _price: number;
+  private _category: string;
+
+  constructor(product: string, price: number, category: string) {
+    this._product = product;
+    this._price = price;
+    this._category = category;
+  }
+
+  get price(): number {
+    return this._price;
+  }
+
+  set price(value: number){
+    if(value < 0) {
+      throw new Error("The value " + value + " is not allowed. Please set a value above 0");
+    }
+
+    this._price = value;
+  }
+
+  get product(): string {
+    return this._product;
+  }
+  get category(): string {
+    return this._category;
+  }
+}
+
+const product = new Product("Ice Cream", 3, "Chocolate");
+console.log("The " + product.category + " " + product.product + " costs " + product.price + "€"); 
+
+
+
+
+
