@@ -606,6 +606,110 @@ const product = new Product("Ice Cream", 3, "Chocolate");
 console.log("The " + product.category + " " + product.product + " costs " + product.price + "€"); 
 
 
+/**
+ * Interfaces
+ */
+
+interface Computer {
+  name: string;
+  ram: number;
+  hdd: number;
+}
+
+const computer1: Computer = {
+  name: "I7",
+  ram: 4,
+  hdd: 100
+}
+
+console.log("Computer Name: " + computer1.name);
+console.log("RAM: " + computer1.ram);
+console.log("HDD: " + computer1.hdd);
 
 
 
+interface MathOperation {
+  (x: number, y: number) : number
+}
+
+const add: MathOperation = (a, b) => a + b;
+const sub: MathOperation = (a, b) => a - b;
+const mul: MathOperation = (a, b) => a * b;
+const div: MathOperation = (a, b) => a / b;
+console.log(div(2,4));
+
+
+interface PersonBase {
+  name: string;
+  age: number;
+}
+
+interface Executive extends PersonBase {
+  readonly id: number;
+  role: string;
+}
+
+const executive: Executive = {
+  name: "Emmanuel",
+  age: 22,
+  id: 1,
+  role: "Junior Developer"
+}
+
+console.log(executive);
+
+
+interface Welcome {
+  firstName: string;
+  lastName: string;
+  age: number;
+  sayHello(): void;
+}
+
+function greetEmployee(person: Welcome) {
+  console.log(`Hello ${person.firstName} ${person.lastName}!`);
+  person.sayHello();
+}
+
+const emma: Welcome = {
+  firstName: "Emma",
+  lastName: "Enoh",
+  age: 22,
+  sayHello() {
+    console.log("Welcome to the Team!");
+  },
+}; 
+
+const bob: Welcome = {
+  firstName: "Bob",
+  lastName: "Bobby",
+  age: 22,
+  sayHello() {
+    console.log("You are the Man!");
+  },
+}; 
+
+greetEmployee(emma);
+greetEmployee(bob);
+
+
+// Declaration Merging
+interface Userr {
+  name: string;
+}
+
+interface Userr {
+  age: number;
+}
+
+interface Userr {
+  location: string;
+}
+
+const userr: Userr = {
+  name: "Emmanuel",
+  age: 22,
+  location: "Austria",
+};
+
+console.log(userr);
