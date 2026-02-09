@@ -713,3 +713,35 @@ const userr: Userr = {
 };
 
 console.log(userr);
+
+
+/**
+ * Generics
+ */
+function uniqueDataTypesFunc<Type>(
+  item: Type, defaultValue: Type
+): [Type, Type] {
+  return [item, defaultValue];
+}
+
+const num = uniqueDataTypesFunc<number>(10, 24)
+const string = uniqueDataTypesFunc<string>("cool", "dude")
+const bool = uniqueDataTypesFunc<boolean>(true, false);
+
+console.log(num);
+console.log(string);
+console.log(bool);
+
+
+interface Dog {
+  name: string;
+  breed: string;
+}
+
+const dog1 = uniqueDataTypesFunc<Dog>(
+  { name: "Buddy", breed: "Labrador" },
+  { name: "Juni", breed: "Bulldog" }
+);
+
+console.log(dog1);
+
